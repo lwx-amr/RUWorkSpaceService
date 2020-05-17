@@ -14,6 +14,7 @@ const app  =  express();
 // Using helmet to increase security
 app.use(helmet());
 
+
 // Middleware to add header to response of the any request
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -21,6 +22,7 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept,Authorization,x-api-key");
     next();
 });
+
 
 // Using Limiter to prevent attacks
 new RateLimit({
@@ -34,14 +36,14 @@ new RateLimit({
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-/*
+
 // Setup mongoose connection
 mongoose.Promise = global.Promise;
 mongoose.connect(db,{
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
-*/
+
 
 // Calling service routes
 app.use(prefix, workspaceRoutes);

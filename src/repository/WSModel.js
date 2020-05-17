@@ -9,6 +9,6 @@ const wsSchema = new Schema({
     }
 });
 
-const wsModel = mongoose.model('workspaces', wsSchema);
+const WSModel = mongoose.model('Workspaces', wsSchema);
 
-module.exports = wsModel;
+module.exports = WSModel;

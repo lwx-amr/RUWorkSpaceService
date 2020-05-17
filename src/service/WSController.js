@@ -1,8 +1,9 @@
-//import wsModel from "../repository/WSModel";
+import WSModel from "../repository/WSModel";
+
 
 // Funciton to check login
 const getWorkSpace  = (req, res) =>{
-    res.json({"MSG": "Hello There!!"});
+    res.json({"MSG": "Done"});
 };
 
 const listWorkSpaces = (req, res) => {
@@ -10,7 +11,12 @@ const listWorkSpaces = (req, res) => {
 };
 
 const createWS = (req, res) => {
-    res.json({ MSG: "Created!!" });
+    const newContact = new WSModel(req.body);
+    newContact.save((err, newContact)=>{
+        if(err)
+            res.send(err);
+        res.json(newContact);
+    });
 };
 
 const deleteWS = (req, res) => {
@@ -37,4 +43,4 @@ const decNumOfJobs = (req, res) => {
     res.json({ MSG: "bate5aaaa !!" });
 };
 
-module.exports = { getWorkSpace };
+module.exports = { getWorkSpace, createWS};
