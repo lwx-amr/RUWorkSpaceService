@@ -14,3 +14,7 @@ const createWS = (req, res) => {
 };
 
 module.exports = { getWorkSpace };
+const bate5a = (req, res) => {
+    res.json({ MSG: "bate5aaaa !!" });
+};
+module.exports = { getWorkSpace };
