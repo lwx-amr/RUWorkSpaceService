@@ -5,7 +5,7 @@ const getWorkSpace  = (req, res) =>{
     res.json({"MSG": "Hello There!!"});
 };
 
-const listWorkSpace = (req, res) => {
+const listWorkSpaces = (req, res) => {
     res.json({ MSG: "fuck you!!" });
 };
 
@@ -13,8 +13,28 @@ const createWS = (req, res) => {
     res.json({ MSG: "Created!!" });
 };
 
-module.exports = { getWorkSpace };
-const bate5a = (req, res) => {
+const deleteWS = (req, res) => {
     res.json({ MSG: "bate5aaaa !!" });
 };
+
+const changeName = (req, res) => {
+    res.json({ MSG: "bate5aaaa !!" });
+};
+
+const addNewUser = (req, res) => {
+    res.json({ MSG: "bate5aaaa !!" });
+};
+
+const deleteUser = (req, res) => {
+    res.json({ MSG: "bate5aaaa !!" });
+};
+
+const incNumOfJobs = (req, res) => {
+    res.json({ MSG: "bate5aaaa !!" });
+};
+
+const decNumOfJobs = (req, res) => {
+    res.json({ MSG: "bate5aaaa !!" });
+};
+
 module.exports = { getWorkSpace };
