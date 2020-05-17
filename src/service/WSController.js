@@ -8,4 +8,8 @@ const getWorkSpace  = (req, res) =>{
 const listWorkSpace = (req, res) => {
     res.json({ MSG: "fuck you!!" });
 };
+
+const bate5a = (req, res) => {
+    res.json({ MSG: "bate5aaaa !!" });
+};
 module.exports = { getWorkSpace };
