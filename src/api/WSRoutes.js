@@ -1,12 +1,14 @@
 import express from "express";
-import { createWS } from "../service/WSController";
+import { getWorkSpace, listWorkSpaces, createWS, deleteWS} from "../service/WSController";
 
 const router = express.Router();
 
-router.get("/workspace", (req, res) => {
-    res.json("Hello, we are very happy that you're here");
-});
+router.route("/workspace")
+    .get(listWorkSpaces)
+    .post(createWS);
 
-router.post("/create", createWS);
+router.route("/workspace/:id")
+    .get(getWorkSpace)
+    .delete(deleteWS);
 
 module.exports = router;

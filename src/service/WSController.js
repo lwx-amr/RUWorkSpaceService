@@ -3,11 +3,19 @@ import WSModel from "../repository/WSModel";
 
 // Funciton to check login
 const getWorkSpace  = (req, res) =>{
-    res.json({"MSG": "Done"});
+    WSModel.findById(req.params.id, (err, data) => {
+        if(err)
+            res.send(err);
+        res.json(data);
+    });
 };
 
 const listWorkSpaces = (req, res) => {
-    res.json({ MSG: "fuck you!!" });
+    WSModel.find({}, (err, data) => {
+        if(err)
+            res.send(err);
+        res.json(data);
+    });
 };
 
 const createWS = (req, res) => {
@@ -20,7 +28,11 @@ const createWS = (req, res) => {
 };
 
 const deleteWS = (req, res) => {
-    res.json({ MSG: "bate5aaaa !!" });
+    WSModel.deleteOne({_id:req.params.id}, (err, data) => {
+        if(err)
+            res.send(err);
+        res.json(data);
+    });
 };
 
 const changeName = (req, res) => {
@@ -43,4 +55,4 @@ const decNumOfJobs = (req, res) => {
     res.json({ MSG: "bate5aaaa !!" });
 };
 
-module.exports = { getWorkSpace, createWS};
+module.exports = { getWorkSpace, listWorkSpaces, createWS, deleteWS};
