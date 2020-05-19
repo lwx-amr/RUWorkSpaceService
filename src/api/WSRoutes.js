@@ -12,7 +12,8 @@ router.route("/workspace")
 
 router.route("/workspace/:id")
     .get(getWorkSpace)
-    .delete(deleteWS);
+    .delete(deleteWS)
+    .patch(changeName);
 
 router.route("/workspace/users/:id")
     .post(addNewUser)

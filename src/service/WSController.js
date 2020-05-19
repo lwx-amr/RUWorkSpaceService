@@ -36,7 +36,16 @@ const deleteWS = (req, res) => {
 };
 
 const changeName = (req, res) => {
-    res.json({ MSG: "bate5aaaa !!" });
+    WSModel.findById(req.params.id, (err, data) => {
+        if (err)
+            res.send(err);
+        data.name = req.body.name;
+        data.save((err, updated) => {
+            if (err)
+                res.send(err)
+            res.json(updated);
+        })
+    });
 };
 
 const addNewUser = (req, res) => {
