@@ -11,7 +11,7 @@ module.exports = {
         version: [1],
     },
     database: {
-        url: process.env.DB_URL || "mongodb+srv://amrister:123456a@todo-xp4ta.mongodb.net/RUWorkSpaces?retryWrites=true&w=majority",
+        url: process.env.DB_URL || "mongodb+srv://rankup:rank1998@cluster0-9enme.mongodb.net/RUWorkSpaces?retryWrites=true&w=majority",
     },
     token: {
         jwtKey: 'RUSecrect%2020',
