@@ -40,11 +40,27 @@ const changeName = (req, res) => {
 };
 
 const addNewUser = (req, res) => {
-    res.json({ MSG: "bate5aaaa !!" });
+    WSModel.update(
+        {_id: req.params.id},
+        { "$push": { "users": req.body.id} },
+        (err, data) => {
+            if (err) 
+                res.send(err);
+            res.json(data);
+        }
+    );     
 };
 
 const deleteUser = (req, res) => {
-    res.json({ MSG: "bate5aaaa !!" });
+    WSModel.update(
+        {_id: req.params.id},
+        { "$pull": { "users": req.body.id} },
+        (err, data) => {
+            if (err) 
+                res.send(err);
+            res.json(data);
+        }
+    ); 
 };
 
 const incNumOfJobs = (req, res) => {
@@ -55,4 +71,6 @@ const decNumOfJobs = (req, res) => {
     res.json({ MSG: "bate5aaaa !!" });
 };
 
-module.exports = { getWorkSpace, listWorkSpaces, createWS, deleteWS};
+module.exports = { getWorkSpace, listWorkSpaces, 
+    createWS, deleteWS,
+    changeName, addNewUser, deleteUser, incNumOfJobs, decNumOfJobs };

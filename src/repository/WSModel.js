@@ -13,7 +13,7 @@ const wsSchema = new Schema({
     },
     numOfJobs:{
         type: Number,
-        required: true
+        default: 0
     },
     users:{
         type: Array,
