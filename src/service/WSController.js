@@ -73,11 +73,30 @@ const deleteUser = (req, res) => {
 };
 
 const incNumOfJobs = (req, res) => {
-    res.json({ MSG: "bate5aaaa !!" });
+    WSModel.findById(req.params.id, (err, data) => {
+        if (err)
+            res.send(err);
+        data.numOfJobs += 1;
+        data.save((err, updated) => {
+            if (err)
+                res.send(err)
+            res.json(updated);
+        })
+    });
 };
 
 const decNumOfJobs = (req, res) => {
-    res.json({ MSG: "bate5aaaa !!" });
+    WSModel.findById(req.params.id, (err, data) => {
+        if (err)
+            res.send(err);
+        if (data.numOfJobs > 0)
+            data.numOfJobs -= 1;
+        data.save((err, updated) => {
+            if (err)
+                res.send(err)
+            res.json(updated);
+        })
+    });
 };
 
 module.exports = { getWorkSpace, listWorkSpaces, 

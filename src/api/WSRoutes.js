@@ -19,4 +19,7 @@ router.route("/workspace/users/:id")
     .post(addNewUser)
     .delete(deleteUser);
 
+router.route("/workspace/jobs/:id")
+    .patch(incNumOfJobs)
+    .put(decNumOfJobs);
 module.exports = router;
