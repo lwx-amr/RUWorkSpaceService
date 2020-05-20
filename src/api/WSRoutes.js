@@ -6,8 +6,10 @@ import { getWorkSpace, listWorkSpaces,
 
 const router = express.Router();
 
+router.route("/workspace/user/:id")
+    .get(listWorkSpaces);
+
 router.route("/workspace")
-    .get(listWorkSpaces)
     .post(createWS);
 
 router.route("/workspace/:id")

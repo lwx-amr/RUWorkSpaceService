@@ -1,6 +1,5 @@
 import WSModel from "../repository/WSModel";
 
-
 // Funciton to check login
 const getWorkSpace  = (req, res) =>{
     WSModel.findById(req.params.id, (err, data) => {
@@ -11,7 +10,7 @@ const getWorkSpace  = (req, res) =>{
 };
 
 const listWorkSpaces = (req, res) => {
-    WSModel.find({}, (err, data) => {
+    WSModel.find({$or:[{ownerID: req.params.id},{users: req.params.id}]}, (err, data) => {
         if(err)
             res.send(err);
         res.json(data);
@@ -89,13 +88,14 @@ const decNumOfJobs = (req, res) => {
     WSModel.findById(req.params.id, (err, data) => {
         if (err)
             res.send(err);
-        if (data.numOfJobs > 0)
+        if (data.numOfJobs > 0){
             data.numOfJobs -= 1;
-        data.save((err, updated) => {
-            if (err)
-                res.send(err)
-            res.json(updated);
-        })
+            data.save((err, updated) => {
+                if (err)
+                    res.send(err)
+                res.json(updated);
+            });
+        }
     });
 };
 

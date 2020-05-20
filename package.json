@@ -1,7 +1,7 @@
 {
-  "name": "login-service",
+  "name": "workspace-service",
   "version": "1.0.0",
-  "description": "Authentication service for our rank up microservices project",
+  "description": "Workspace service for our rank up microservices project",
   "main": "service.js",
   "scripts": {
     "prebuild": "rm -rf ./build/*",
@@ -14,20 +14,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lwx-amr/RULoginService.git"
+    "url": "git+https://github.com/lwx-amr/RUWorkSpaceService.git"
   },
   "keywords": [
     "Node.js",
     "Express",
-    "JWT",
     "Mongo"
   ],
   "author": "Amr Hussien",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/lwx-amr/RULoginService/issues"
+    "url": "https://github.com/lwx-amr/RUWorkSpaceService/issues"
   },
-  "homepage": "https://github.com/lwx-amr/RULoginService#readme",
+  "homepage": "https://github.com/lwx-amr/RUWorkSpaceService#readme",
   "dependencies": {
     "bcrypt": "^4.0.1",
     "config": "^3.3.0",
