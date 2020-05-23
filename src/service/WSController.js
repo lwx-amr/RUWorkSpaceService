@@ -96,6 +96,8 @@ const decNumOfJobs = (req, res) => {
                 res.json(updated);
             });
         }
+        else
+            res.json({ Empty_WS: "This workspace either has no job profiles yet or they are already deleted" });
     });
 };
 
