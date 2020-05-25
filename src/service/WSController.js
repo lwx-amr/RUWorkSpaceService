@@ -101,6 +101,10 @@ const decNumOfJobs = (req, res) => {
     });
 };
 
+const invalidRequest = (req, res) => {
+    res.send("<h1>PAGE NOT FOUND</h1>");
+}
+
 module.exports = { getWorkSpace, listWorkSpaces, 
     createWS, deleteWS,
-    changeName, addNewUser, deleteUser, incNumOfJobs, decNumOfJobs };
+    changeName, addNewUser, deleteUser, incNumOfJobs, decNumOfJobs, invalidRequest };
