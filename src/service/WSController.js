@@ -96,9 +96,15 @@ const decNumOfJobs = (req, res) => {
                 res.json(updated);
             });
         }
+        else
+            res.json({ Empty_WS: "This workspace either has no job profiles yet or they are already deleted" });
     });
 };
 
+const invalidRequest = (req, res) => {
+    res.send("<h1>PAGE NOT FOUND</h1>");
+}
+
 module.exports = { getWorkSpace, listWorkSpaces, 
     createWS, deleteWS,
-    changeName, addNewUser, deleteUser, incNumOfJobs, decNumOfJobs };
+    changeName, addNewUser, deleteUser, incNumOfJobs, decNumOfJobs, invalidRequest };
