@@ -8,17 +8,29 @@ const wsSchema = new Schema({
         required: true
     },
     ownerID:{
-        type: Number,
+        type: Schema.Types.ObjectId,
         required: true
     },
     numOfJobs:{
         type: Number,
         default: 0
     },
-    users:{
-        type: Array,
-        required: true
-    },
+    users:[
+        {
+            userID: {
+                type: Schema.Types.ObjectId,
+                required: true
+            },
+            name:{
+                type: String,
+                required: true
+            },
+            email:{
+                type: String,
+                required: true
+            },
+        }
+    ],
     createdDate:{
         type:Date,
         default: Date.now

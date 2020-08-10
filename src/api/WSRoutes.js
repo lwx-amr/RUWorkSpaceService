@@ -15,11 +15,13 @@ router.route("/workspace")
 router.route("/workspace/:id")
     .get(getWorkSpace)
     .delete(deleteWS)
-    .patch(changeName);
+    .post(changeName);
 
 router.route("/workspace/users/:id")
-    .post(addNewUser)
-    .delete(deleteUser);
+    .post(addNewUser);
+    
+router.route("/workspace/users/:id/:userID")
+    .post(deleteUser);
 
 router.route("/workspace/jobs/:id")
     .patch(incNumOfJobs)

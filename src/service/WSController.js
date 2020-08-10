@@ -1,50 +1,39 @@
 import WSModel from "../repository/WSModel";
 
-// Funciton to check login
 const getWorkSpace  = (req, res) =>{
-    WSModel.findById(req.params.id, (err, data) => {
-        if(err)
-            res.send(err);
-        res.json(data);
-    });
+    WSModel.findById(req.params.id)
+        .then(data => res.json(data))
+        .catch(err => res.send(err));
 };
 
 const listWorkSpaces = (req, res) => {
-    WSModel.find({$or:[{ownerID: req.params.id},{users: req.params.id}]}, (err, data) => {
-        if(err)
-            res.send(err);
-        res.json(data);
-    });
+    WSModel.find({$or:[{ownerID: req.params.id},{'users.id': req.params.id}]})
+        .then(data => res.send(data))
+        .catch(err => res.send(err));
 };
 
 const createWS = (req, res) => {
-    const newContact = new WSModel(req.body);
-    newContact.save((err, newContact)=>{
-        if(err)
-            res.send(err);
-        res.json(newContact);
-    });
+    const newWS = new WSModel(req.body);
+    newWS.save()
+        .then((ws) => res.json(ws))
+        .catch((err) => res.status(400).json(err)); 
 };
 
 const deleteWS = (req, res) => {
-    WSModel.deleteOne({_id:req.params.id}, (err, data) => {
-        if(err)
-            res.send(err);
-        res.json(data);
-    });
+    WSModel.deleteOne({_id:req.params.id})
+        .then(data => res.json(data))
+        .catch(err => res.send(err))
 };
 
 const changeName = (req, res) => {
-    WSModel.findById(req.params.id, (err, data) => {
-        if (err)
-            res.send(err);
-        data.name = req.body.name;
-        data.save((err, updated) => {
-            if (err)
-                res.send(err)
-            res.json(updated);
+    WSModel.findById(req.params.id)
+        .then(data => {
+            data.name = req.body.name;
+            data.save()
         })
-    });
+        .then(updated =>  res.json(updated))
+        .catch(err => res.send(err))
+        .catch(err => res.send(err));
 };
 
 const addNewUser = (req, res) => {
@@ -60,15 +49,13 @@ const addNewUser = (req, res) => {
 };
 
 const deleteUser = (req, res) => {
-    WSModel.update(
-        {_id: req.params.id},
-        { "$pull": { "users": req.body.id} },
-        (err, data) => {
-            if (err) 
-                res.send(err);
+    console.log(req.params.id, req.params.userID);
+    WSModel.updateOne({_id: req.params.id},{$pull:{users:{userID: req.params.userID}}},{ safe: false })
+        .then(data => {
+            console.log(data);
             res.json(data);
-        }
-    ); 
+        })
+        .catch(err => res.send(err));
 };
 
 const incNumOfJobs = (req, res) => {
