@@ -14,7 +14,6 @@ const listWorkSpaces = (req, res) => {
 
 const createWS = (req, res) => {
     const newWS = new WSModel(req.body);
-    console.log(newWS);
     newWS.save()
         .then((ws) => res.json(ws))
         .catch((err) => res.status(400).json(err)); 
@@ -50,10 +49,8 @@ const addNewUser = (req, res) => {
 };
 
 const deleteUser = (req, res) => {
-    console.log(req.params.id, req.params.userID);
     WSModel.updateOne({_id: req.params.id},{$pull:{users:{userID: req.params.userID}}},{ safe: false })
         .then(data => {
-            console.log(data);
             res.json(data);
         })
         .catch(err => res.send(err));
