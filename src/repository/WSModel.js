@@ -31,6 +31,10 @@ const wsSchema = new Schema({
             },
         }
     ],
+    emails : {
+        type : Array,
+        required: false
+    },
     createdDate:{
         type:Date,
         default: Date.now

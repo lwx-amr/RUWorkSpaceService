@@ -28,7 +28,6 @@
   },
   "homepage": "https://github.com/lwx-amr/RUWorkSpaceService#readme",
   "dependencies": {
-    "bcrypt": "^4.0.1",
     "config": "^3.3.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
@@ -36,7 +35,6 @@
     "express": "^4.17.1",
     "express-rate-limit": "^5.1.1",
     "helmet": "^3.21.3",
-    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.4"
   },
   "devDependencies": {

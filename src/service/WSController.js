@@ -7,13 +7,14 @@ const getWorkSpace  = (req, res) =>{
 };
 
 const listWorkSpaces = (req, res) => {
-    WSModel.find({$or:[{ownerID: req.params.id},{'users.id': req.params.id}]})
+    WSModel.find({$or:[{ownerID: req.params.id},{'users.id': req.params.id}, {emails: req.query.email}]})
         .then(data => res.send(data))
         .catch(err => res.send(err));
 };
 
 const createWS = (req, res) => {
     const newWS = new WSModel(req.body);
+    console.log(newWS);
     newWS.save()
         .then((ws) => res.json(ws))
         .catch((err) => res.status(400).json(err)); 
